@@ -1,33 +1,46 @@
-import React, { Fragment, useContext, useEffect } from 'react';
+import React, { Fragment, useContext, useEffect, Component } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import Spinner from '../layout/Spinner';
-import BuildingItem from './BuildingItem.js';
 import BuildingContext from '../../context/building/buildingContext';
 import GoogleMapReact from 'google-map-react';
 
-
-
-
-import AuthContext from '../../context/auth/authContext';
-
 const APIKEY = 'AIzaSyAnOJYO-oikKdLAOMM-wE2AUXuf-2Sr-iw';
 
-const options = {
-  provider: 'google',
-  apiKey: APIKEY};
-
+const gotoBuildingPage = () => {
+  console.log("CLICK IS WORKING");
+}
 
 const Map = () => {
   const buildingContext = useContext(BuildingContext);
   const { buildings, getBuildings, lat, lng, filtered_building} = buildingContext;
 
-  const AnyReactComponent = ({ text }) => <div>{text}</div>;
+  const pinStyle = {
+    // initially any map object has left top corner at lat lng coordinates
+    // it's on you to set object origin to 0,0 coordinates
+    position: 'absolute',
+    width: 20,
+    height: 20,
+    left: -20 / 2,
+    top: -20 / 2,
+  
+    border: '5px solid #f44336',
+    borderRadius: 20,
+    backgroundColor: 'white',
+    textAlign: 'center',
+    color: '#3f51b5',
+    fontSize: 16,
+    fontWeight: 'bold',
+    padding: 4,
+    cursor: 'pointer',
+  };
+
+  const BuildingPins = ({ text }) => <div style={pinStyle}>{''}</div>;
+
   const center = {
     lat: 39.9526,
     lng: -75.1652,
   };
   const zoom = 11;
-
 
   useEffect(() => {
     getBuildings();
@@ -35,6 +48,7 @@ const Map = () => {
   }, []);
  
   return (
+
     // Important! Always set the container height explicitly
     <div>
       <div style={{ height: '50vh', width: '100%' }}>
@@ -45,29 +59,24 @@ const Map = () => {
           yesIWantToUseGoogleMapApiInternals
           // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
         >
-          {/* {places.map(place => (
-          <Marker
-            key={place.id}
-            text={place.name}
-            lat={place.geometry.location.lat}
-            lng={place.geometry.location.lng}
-          />
-        ))} */}
           {buildings !== null ? (
               ( filtered_building !== null
               ? filtered_building.map(building => (
             
-            <AnyReactComponent lat={building.lat} lng={building.lng} text='X' />
+            <BuildingPins lat={building.lat} lng={building.lng} key={building._id}
+              key={building._id}
+              onClick={gotoBuildingPage}
+              />
               ))
           
           : buildings.map(building => (
-              <AnyReactComponent lat={building.lat} lng={building.lng} text='X' />
+              <BuildingPins lat={building.lat} lng={building.lng} 
+              key={building._id}
+              onClick={gotoBuildingPage}
+              />
+              
           )))
-          ):null}  
-            
-    
-
-          {/* <AnyReactComponent lat={39.9526} lng={-75.1652} text='X' /> */}
+          ):null}              
         </GoogleMapReact>
       </div>
     </div>
