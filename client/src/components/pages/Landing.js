@@ -3,6 +3,11 @@ import Map from '../map/Map';
 import Articles from '../articles/Articles';
 import ArticleForm from '../articles/ArticleForm';
 import ArticleFilter from '../articles/ArticleFilter';
+
+import Buildings from '../buildings/Buildings';
+import BuildingForm from '../buildings/BuildingForm';
+import BuildingFilter from '../buildings/BuildingFilter';
+
 import AuthContext from '../../context/auth/authContext';
 
 const Landing = () => {
@@ -26,6 +31,13 @@ const Landing = () => {
         <div>
           <ArticleFilter />
           <Articles />
+          <ArticleForm />
+        </div>
+        <div>
+        <BuildingFilter />
+          <Buildings />
+          <BuildingForm />
+
         </div>
       {/* </div> */}
     

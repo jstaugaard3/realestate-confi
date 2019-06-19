@@ -7,8 +7,10 @@ import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import Alerts from './components/layout/Alerts';
 import PrivateRoute from './components/routing/PrivateRoute';
-
 import ArticleState from './context/article/ArticleState';
+
+import BuildingState from './context/building/BuildingState';
+
 import AuthState from './context/auth/AuthState';
 import AlertState from './context/alert/AlertState';
 import setAuthToken from './utils/setAuthToken';
@@ -21,6 +23,7 @@ if (localStorage.token) {
 const App = () => {
   return (
     <AuthState>
+      <BuildingState>
       <ArticleState>
         <AlertState>
           <Router>
@@ -39,6 +42,7 @@ const App = () => {
           </Router>
         </AlertState>
       </ArticleState>
+      </BuildingState>
     </AuthState>
   );
 };
