@@ -3,7 +3,7 @@ const mongoose = require('mongoose');
 const BuildingSchema = mongoose.Schema({
   street: {
     type: String,
-    required: true
+    required: true,
   },
   city: {
     type: String,
@@ -11,17 +11,16 @@ const BuildingSchema = mongoose.Schema({
   },
   state: {
     type: String,
-    required: true
+    required: true,
   },
   lat: {
     type: String,
-    required: true
+    required: true,
   },
   lng: {
     type: String,
-    required: true
+    required: true,
   }
-
 });
 
 module.exports = mongoose.model('building', BuildingSchema);

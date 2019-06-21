@@ -1,18 +1,22 @@
-import React, { Fragment, useContext, useEffect, Component } from 'react';
-import { CSSTransition, TransitionGroup } from 'react-transition-group';
-import Spinner from '../layout/Spinner';
+import React, { useContext, useEffect } from 'react';
 import BuildingContext from '../../context/building/buildingContext';
 import GoogleMapReact from 'google-map-react';
 
-const APIKEY = 'AIzaSyAnOJYO-oikKdLAOMM-wE2AUXuf-2Sr-iw';
+const APIKEY = 'AIzaSyCaWDmX3JzF4wTq_lp6bNOP0WJZox3YXww';
 
-const gotoBuildingPage = () => {
-  console.log("CLICK IS WORKING");
-}
+
 
 const Map = () => {
+
+
+  const gotoBuildingPage = (e) => {
+    console.log(e.target.id);
+    window.location = `/property/${e.target.id}`;
+
+  }
+
   const buildingContext = useContext(BuildingContext);
-  const { buildings, getBuildings, lat, lng, filtered_building} = buildingContext;
+  const { buildings, getBuildings, filtered_building} = buildingContext;
 
   const pinStyle = {
     // initially any map object has left top corner at lat lng coordinates
@@ -34,13 +38,13 @@ const Map = () => {
     cursor: 'pointer',
   };
 
-  const BuildingPins = ({ text }) => <div style={pinStyle}>{''}</div>;
+  const BuildingPins = (props ) => <div id={props.id} style={pinStyle} onClick={gotoBuildingPage}>{''}</div>;
 
   const center = {
-    lat: 39.9526,
-    lng: -75.1652,
+    lat: 40.0793,
+    lng: -75.3016,
   };
-  const zoom = 11;
+  const zoom = 13;
 
   useEffect(() => {
     getBuildings();
@@ -63,16 +67,14 @@ const Map = () => {
               ( filtered_building !== null
               ? filtered_building.map(building => (
             
-            <BuildingPins lat={building.lat} lng={building.lng} key={building._id}
+            <BuildingPins lat={building.lat} lng={building.lng}
               key={building._id}
-              onClick={gotoBuildingPage}
               />
               ))
           
           : buildings.map(building => (
               <BuildingPins lat={building.lat} lng={building.lng} 
-              key={building._id}
-              onClick={gotoBuildingPage}
+              key={building._id} id={building._id}
               />
               
           )))
