@@ -1,5 +1,7 @@
 import React, { useContext } from 'react';
 import ArticleContext from '../../context/article/articleContext';
+import Moment from 'react-moment';
+import 'moment-timezone';
 
 const ArticleItem = ({ article }) => {
   const articleContext = useContext(ArticleContext);
@@ -38,13 +40,13 @@ const ArticleItem = ({ article }) => {
           <ul className='list'>
             {link && (
               <li>
-                <i className='fas fa-link' /> {link}
+                <i className='fas fa-link' /> <a href={link}>Link to Article</a>
               </li>
             )}
 
             {date && (
           <li>
-            <i className='fas fa-clock' /> {date}
+            <i className='fas fa-clock' /> <Moment format="MM/DD/YYYY">{date}</Moment>
           </li>
         )}
 

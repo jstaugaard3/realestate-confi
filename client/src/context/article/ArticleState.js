@@ -29,7 +29,7 @@ const ArticleState = props => {
   const getArticles = async () => {
     try {
       const res = await axios.get('/api/articles');
-
+      
       dispatch({
         type: GET_ARTICLES,
         payload: res.data
@@ -41,6 +41,37 @@ const ArticleState = props => {
       });
     }
   };
+
+
+  // Get Building Articles
+  const getBuildingArticles = async id => {
+
+    try {
+      const res = await axios.get(`/api/articles/${id}`);
+      console.log("in getBuildingArticles");
+      dispatch({
+        type: GET_ARTICLES,
+        payload: res.data
+      });
+    } catch (err) {
+      dispatch({
+        type: ARTICLE_ERROR,
+        payload: err.response.msg
+      });
+    }
+  };
+
+
+
+
+
+
+
+
+
+
+
+
 
   // Add Article
   const addArticle = async article => {
@@ -84,6 +115,7 @@ const ArticleState = props => {
 
   // Update Article
   const updateArticle = async article => {
+    console.log(article);
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -149,7 +181,8 @@ const ArticleState = props => {
         filterArticles,
         clearFilter,
         getArticles,
-        clearArticles
+        clearArticles,
+        getBuildingArticles
       }}
     >
       {props.children}

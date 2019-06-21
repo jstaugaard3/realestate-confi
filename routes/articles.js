@@ -12,7 +12,7 @@ const Article = require('../models/Articles');
 // @access    Private
 router.get('/', auth, async (req, res) => {
   try {
-    const articles = await Article.find({ user: req.user.id }).sort({
+    const articles = await Article.find().sort({
       date: -1
     });
     res.json(articles);
@@ -21,6 +21,35 @@ router.get('/', auth, async (req, res) => {
     res.status(500).send('Server Error');
   }
 });
+
+
+// @route     GET api/articles/:id
+// @desc      Get all news articles
+// @access    Private
+router.get('/:id', auth, async (req, res) => {
+  try {
+    console.log("In router");
+    console.log(req.params.id)
+    const articles = await Article.find({ property: req.params.id }).sort({
+      date: -1
+    });
+    res.json(articles);
+  } catch (err) {
+    console.log("in the error message");
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+
+
+
+
+
+
+
 
 // @route     POST api/articles
 // @desc      Add new article
@@ -73,7 +102,7 @@ router.put('/:id', auth, async (req, res) => {
   const articleFields = {};
   if (source) articleFields.source = source;
   if (heading) articleFields.heading = heading;
-  if (link) articleFields.lini = link;
+  if (link) articleFields.link= link;
   if (property) articleFields.property = property;
   if (date) articleFields.date = date;
 

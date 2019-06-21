@@ -14,44 +14,9 @@ const BuildingItem = ({ building }) => {
 
   return (
     <div className='card bg-light'>
-      <h3 className='text-primary text-left'>{street}</h3>
-
-      <div className='grid-2'>
-        <div>
-          <ul className='list'>
-            {city && (
-              <li>
-                <i className='fas fa-newspaper' /> {city}
-              </li>
-            )}
-
-            {state && (
-              <li>
-                <i className='fas fa-map-pin' /> {state}
-              </li>
-            )}
-
-          </ul>
-        </div>
-
-        <div>
-          <ul className='list'>
-            {lat && (
-              <li>
-                <i className='fas fa-link' /> {lat}
-              </li>
-            )}
-
-            {lng && (
-          <li>
-            <i className='fas fa-clock' /> {lng}
-          </li>
-        )}
-
-
-          </ul>
-        </div>
-      </div>
+      <h3 className='text-primary text-left'><i className='fas fa-building' /> {street}, {city}, {state}</h3>
+      <h4 className='text-primary text-left'><i className='fas fa-map-pin' /> {lat} {lng}</h4>
+      <h4 className='text-primary text-left'><i className='fas fa-fingerprint' /> {_id} </h4>
 
       <p>
       <button className="btn btn-dark btn-sm" onClick={()=> setCurrentBuilding(building)}>Edit</button>

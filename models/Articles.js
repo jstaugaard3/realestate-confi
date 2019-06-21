@@ -18,8 +18,8 @@ const ArticleSchema = mongoose.Schema({
     required: true
   },
   property: {
-      type: String,
-      required: true
+    type: String,
+    required: true
   },
   date: {
     type: Date,
