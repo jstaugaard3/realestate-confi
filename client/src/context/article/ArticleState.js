@@ -63,16 +63,6 @@ const ArticleState = props => {
 
 
 
-
-
-
-
-
-
-
-
-
-
   // Add Article
   const addArticle = async article => {
     const config = {

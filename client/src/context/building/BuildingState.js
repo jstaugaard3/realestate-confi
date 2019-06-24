@@ -4,6 +4,7 @@ import BuildingContext from './buildingContext';
 import buildingReducer from './buildingReducer';
 import {   
   GET_BUILDINGS,
+  GET_BUILDING,
   ADD_BUILDING,
   DELETE_BUILDING,
   SET_CURRENT_BUILDING,
@@ -28,7 +29,9 @@ const BuildingState = props => {
   // Get Buildings
   const getBuildings = async () => {
     try {
-      const res = await axios.get('/api/buildings');
+      const res = await axios.get("/api/buildings/");
+      console.log("here is the response");
+      console.log(res);
       dispatch({
         type: GET_BUILDINGS,
         payload: res.data,
@@ -41,6 +44,33 @@ const BuildingState = props => {
       });
     }
   };
+
+
+    // Get Building
+    const getBuilding = async id => {
+      try {
+        const res = await axios.get(`/api/buildings/${id}`);
+        console.log("here is the response");
+        console.log(res);
+        dispatch({
+          type: GET_BUILDING,
+          payload: res.data,
+        });
+      } catch (err) {
+        console.log(err);
+        dispatch({
+          type: BUILDING_ERROR,
+          payload: err,
+        });
+      }
+    };
+
+
+
+
+
+
+
 
   // Add Building
   const addBuilding = async building => {
@@ -150,6 +180,7 @@ const BuildingState = props => {
         filtered_building: state.filtered_building,
         error_building: state.error_building,
         getBuildings,
+        getBuilding,
         addBuilding,
         deleteBuilding,
         setCurrentBuilding,

@@ -41,16 +41,6 @@ router.get('/:id', auth, async (req, res) => {
   }
 });
 
-
-
-
-
-
-
-
-
-
-
 // @route     POST api/articles
 // @desc      Add new article
 // @access    Private
@@ -70,12 +60,14 @@ router.post(
       return res.status(400).json({ errors: errors.array() });
     }
 
-    const { source, heading, link, property, date } = req.body;
+    const { source, heading, desc, photo, link, property, date } = req.body;
 
     try {
       const newArticle = new Article({
         source,
         heading,
+        desc,
+        photo,
         link,
         property,
         date,
@@ -96,12 +88,14 @@ router.post(
 // @desc      Update article
 // @access    Private
 router.put('/:id', auth, async (req, res) => {
-  const { source, heading, link, property, date } = req.body;
+  const { source, heading, desc, photo, link, property, date } = req.body;
 
   // Build article object
   const articleFields = {};
   if (source) articleFields.source = source;
   if (heading) articleFields.heading = heading;
+  if (desc) articleFields.desc = desc;
+  if (photo) articleFields.photo = photo;
   if (link) articleFields.link= link;
   if (property) articleFields.property = property;
   if (date) articleFields.date = date;

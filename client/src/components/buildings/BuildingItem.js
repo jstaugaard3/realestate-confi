@@ -1,7 +1,11 @@
 import React, { useContext } from 'react';
+import { Link } from 'react-router-dom'
 import BuildingContext from '../../context/building/buildingContext';
 
+
+
 const BuildingItem = ({ building }) => {
+
   const buildingContext = useContext(BuildingContext);
   const { deleteBuilding, setCurrentBuilding, clearCurrentBuilding } = buildingContext;
 
@@ -12,18 +16,40 @@ const BuildingItem = ({ building }) => {
     clearCurrentBuilding();
   };
 
-  return (
-    <div className='card bg-light'>
-      <h3 className='text-primary text-left'><i className='fas fa-building' /> {street}, {city}, {state}</h3>
-      <h4 className='text-primary text-left'><i className='fas fa-map-pin' /> {lat} {lng}</h4>
-      <h4 className='text-primary text-left'><i className='fas fa-fingerprint' /> {_id} </h4>
+  const gotoBuildingPage = (e) => {
+    console.log(e.target.id);
+    window.location = `/property/${e.target.id}`;
 
-      <p>
+  }
+
+
+
+  return (
+
+    <div>
+
+
+
+<div className="col s12 m6">
+    <div className="card horizontal">
+      <div className="card-stacked">
+        <div className="card-content">
+        <p className='text-primary text-left'><i className='fas fa-building' /> {street}, {city}, {state}</p>
+      <p className='text-primary text-left'><i className='fas fa-map-pin' /> {lat} {lng}</p>
+      <p className='text-primary text-left'><i className='fas fa-fingerprint' /> {_id} </p>
+        </div>
+        <div className="card-action">
+          <Link to={ "/property/".concat(_id)  }>Building Page</Link>
+          <p>
       <button className="btn btn-dark btn-sm" onClick={()=> setCurrentBuilding(building)}>Edit</button>
         <button className='btn btn-danger btn-sm' onClick={onDelete}>
           Delete
         </button>
       </p>
+        </div>
+      </div>
+    </div>
+  </div>
     </div>
   );
 };

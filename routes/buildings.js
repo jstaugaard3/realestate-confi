@@ -23,6 +23,30 @@ router.get('/', auth, async (req, res) => {
   }
 });
 
+
+// @route     GET api/buildings/:id
+// @desc      Get single building
+// @access    Private
+router.get('/:id', auth, async (req, res) => {
+  
+  try {
+    const buildings = await Building.find( { _id: req.params.id}).sort({
+      date: -1
+    });
+    res.json(buildings);
+    console.log(buildings);
+  } catch (err) {
+    console.error(err.message);
+    res.status(500).send('Server Error');
+  }
+});
+
+
+
+
+
+
+
 // @route     POST api/buildings
 // @desc      Add new building
 // @access    Private
@@ -108,11 +132,6 @@ router.delete('/:id', auth, async (req, res) => {
   try {
     let building = await Building.findById(req.params.id);
     if (!building) return res.status(404).json({ msg: 'Article not found' });
-
-    // Make sure user owns article
-    // if (building.user.toString() !== req.user.id) {
-    //   return res.status(401).json({ msg: 'Not authorized' });
-    // }
 
     await Building.findByIdAndRemove(req.params.id);
 

@@ -2,6 +2,7 @@ import React, { Fragment } from 'react';
 import { BrowserRouter as Router, Route, Switch } from 'react-router-dom';
 import Navbar from './components/layout/Navbar';
 import Landing from './components/pages/Landing';
+import Admin from './components/pages/Admin';
 import Property from './components/pages/Property';
 import About from './components/pages/About';
 import Register from './components/auth/Register';
@@ -34,6 +35,7 @@ const App = () => {
                 <Alerts />
                 <Switch>
                   <PrivateRoute exact path='/' component={Landing} />
+                  <PrivateRoute exact path='/admin' component={Admin} />
                   <PrivateRoute path='/property/:id' component={Property} />
                   <Route exact path='/about' component={About} />
                   <Route exact path='/register' component={Register} />

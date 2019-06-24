@@ -22,7 +22,10 @@ const ArticleFilter = () => {
   };
 
   return (
-    <form>
+    <div>
+
+    
+    <form className="row">
       <input
         ref={text}
         type='text'
@@ -30,6 +33,7 @@ const ArticleFilter = () => {
         onChange={onChange}
       />
     </form>
+    </div>
   );
 };
 
