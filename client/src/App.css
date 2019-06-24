@@ -3,6 +3,7 @@
 /* Global Styles */
 :root {
   --primary-color: #003699;
+  --secondary-color: black;
   --dark-color: #333333;
   --light-color: #f4f4f4;
   --danger-color: #dc3545;
@@ -41,12 +42,12 @@ img {
 }
 
 /* Utilities */
-.container {
+/* .container {
   max-width: 1100px;
   margin: auto;
   overflow: hidden;
   padding: 0 2rem;
-}
+} */
 
 /* Text Styles*/
 .x-large {
@@ -74,6 +75,10 @@ img {
   color: var(--primary-color);
 }
 
+.text-secondary {
+  color: var(--secondary-color);
+}
+
 .text-dark {
   color: var(--dark-color);
 }
@@ -96,6 +101,23 @@ img {
   border: #ccc 1px dotted;
   margin: 0.7rem 0;
 }
+
+.card-image{
+  height: 200px; /* Your height here */
+  overflow: hidden;
+}
+
+.card-content{
+  height: 100px; /* Your height here */
+  overflow: hidden;
+}
+
+.card-forum{
+  height: 800px; /* Your height here */
+  overflow: hidden;
+}
+
+
 
 /* List */
 .list {

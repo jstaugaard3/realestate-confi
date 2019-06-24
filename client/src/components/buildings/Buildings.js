@@ -20,6 +20,7 @@ const Buildings = () => {
 
   return (
     <Fragment>
+      <div className="row">
       {buildings !== null && !loading ? (
         <TransitionGroup>
           {filtered_building !== null
@@ -45,6 +46,7 @@ const Buildings = () => {
       ) : (
         <Spinner />
       )}
+      </div>
     </Fragment>
   );
 };

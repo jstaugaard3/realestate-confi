@@ -5,19 +5,16 @@ import BuildingContext from '../../context/building/buildingContext';
 const ArticleForm = () => {
   const articleContext = useContext(ArticleContext);
 
-
   const { addArticle, updateArticle, clearCurrent, current } = articleContext;
-  
+
   // Following code is to select building to bind to select statement
   const buildingContext = useContext(BuildingContext);
   const { buildings, getBuildings } = buildingContext;
-  
- 
+
   useEffect(() => {
     getBuildings();
     // eslint-disable-next-line
   }, []);
-  
 
   useEffect(() => {
     if (current !== null) {
@@ -26,9 +23,11 @@ const ArticleForm = () => {
       setArticle({
         source: '',
         heading: '',
+        desc: '',
+        photo: '',
         link: '',
         property: '',
-        date: ''
+        date: '',
       });
     }
   }, [articleContext, current]);
@@ -36,18 +35,18 @@ const ArticleForm = () => {
   const [article, setArticle] = useState({
     source: '',
     heading: '',
+    desc: '',
+    photo: '',
     link: '',
     property: '',
     date: '',
   });
 
-
   const onSelectChange = e => {
     setArticle({ ...article, property: e.target.value });
   };
 
-
-  const { source, heading, link, date } = article;
+  const { source, heading, desc, photo, link, date } = article;
 
   const onChange = e =>
     setArticle({ ...article, [e.target.name]: e.target.value });
@@ -69,7 +68,6 @@ const ArticleForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-    
       <h2 className='text-primary'>
         {current ? 'Edit Article' : 'Add Article'}
       </h2>
@@ -89,6 +87,20 @@ const ArticleForm = () => {
       />
       <input
         type='text'
+        placeholder='Description'
+        name='desc'
+        value={desc}
+        onChange={onChange}
+      />
+      <input
+        type='text'
+        placeholder='Photo'
+        name='photo'
+        value={photo}
+        onChange={onChange}
+      />
+      <input
+        type='text'
         placeholder='Link'
         name='link'
         value={link}
@@ -101,17 +113,16 @@ const ArticleForm = () => {
         value={date}
         onChange={onChange}
       />
-    <div>Select building associated with article: </div>
-    <select onChange={onSelectChange}>
-      {buildings !== null ? 
-          (buildings.map(building => 
-              (<option key={building._id} 
-              name='property'
-              value={building._id}
-              >{building.street + ", " + building.city+", "+building.state}
-              </option>)))
-       : null}
-      </select> 
+      <div>Select building associated with article: </div>
+      <select onChange={onSelectChange}>
+        {buildings !== null
+          ? buildings.map(building => (
+              <option key={building._id} name='property' value={building._id}>
+                {building.street + ', ' + building.city + ', ' + building.state}
+              </option>
+            ))
+          : null}
+      </select>
 
       <div>
         <input

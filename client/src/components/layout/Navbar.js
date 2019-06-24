@@ -41,14 +41,17 @@ const Navbar = ({ title, icon }) => {
   );
 
   return (
-    <div className='navbar bg-primary'>
-      <h1>
-        <i className={icon} /> {title}
-      </h1>
-      <ul>{isAuthenticated ? authLinks : guestLinks}</ul>
+    <div className='navbar blue-grey white-text'>
+      <h4>
+        <a href="/"><i className={icon} /> {title} </a>
+      </h4>
+      <h6><ul>{isAuthenticated ? authLinks : guestLinks}</ul></h6>
     </div>
   );
 };
+
+
+
 
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,

@@ -21,6 +21,14 @@ const ArticleSchema = mongoose.Schema({
     type: String,
     required: true
   },
+  desc: {
+    type: String,
+    required: true
+  },
+  photo: {
+    type: String,
+    required: true
+  },
   date: {
     type: Date,
     default: Date.now

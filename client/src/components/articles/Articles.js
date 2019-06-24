@@ -20,31 +20,31 @@ const Articles = () => {
 
   return (
     <Fragment>
-      {articles !== null && !loading ? (
-        <TransitionGroup>
-          {filtered !== null
-            ? filtered.map(article => (
-                <CSSTransition
-                  key={article._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <ArticleItem article={article} />
-                </CSSTransition>
-              ))
-            : articles.map(article => (
-                <CSSTransition
-                  key={article._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <ArticleItem article={article} />
-                </CSSTransition>
-              ))}
-        </TransitionGroup>
-      ) : (
-        <Spinner />
-      )}
+      <div className='row'>
+        {articles !== null && !loading ? (
+          <TransitionGroup>
+            {filtered !== null
+              ? filtered.map(article => (
+                  <CSSTransition
+                    key={article._id}
+                    timeout={500}
+                    classNames='item'>
+                    <ArticleItem article={article} />
+                  </CSSTransition>
+                ))
+              : articles.map(article => (
+                  <CSSTransition
+                    key={article._id}
+                    timeout={500}
+                    classNames='item'>
+                    <ArticleItem article={article} />
+                  </CSSTransition>
+                ))}
+          </TransitionGroup>
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </Fragment>
   );
 };
