@@ -51,9 +51,9 @@ const BuildingForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className='text-primary'>
+      <h4 className='blue-grey-text'>
         {current_building ? 'Edit Building' : 'Add Building'}
-      </h2>
+      </h4>
       <input
         type='text'
         placeholder='Street'
@@ -94,12 +94,12 @@ const BuildingForm = () => {
         <input
           type='submit'
           value={current_building ? 'Update Building' : 'Add Building'}
-          className='btn btn-primary btn-block'
+          className='btn green'
         />
       </div>
       {current_building && (
         <div>
-          <button className='btn btn-light btn-block' onClick={clearAll}>
+          <button className='btn yellow black-text' onClick={clearAll}>
             Clear
           </button>
         </div>

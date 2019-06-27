@@ -4,7 +4,7 @@ import ArticlesAdmin from '../articles/ArticlesAdmin';
 import ArticleForm from '../articles/ArticleForm';
 import ArticleFilter from '../articles/ArticleFilter';
 
-import Buildings from '../buildings/Buildings';
+import BuildingsAdmin from '../buildings/BuildingsAdmin';
 import BuildingForm from '../buildings/BuildingForm';
 import BuildingFilter from '../buildings/BuildingFilter';
 
@@ -20,29 +20,38 @@ const Admin = () => {
 
   return (
     <div>
-      <div className='grid-1'>
+      <div className='row'>
         <Map />
       </div>
 
-      {/* <div className='grid-2'>
-        <div>
-          <ArticleForm />
-        </div> */}
-        <div>
-          <ArticleFilter />
-          <ArticlesAdmin />
-          <ArticleForm />
-        </div>
-        <div>
-        <BuildingFilter />
-          <Buildings />
-          <BuildingForm />
+      <div className='row'>
+        <div className='col s12 m6'>
+          <div>
+            <ArticleForm />
+            <ArticleFilter />
 
+          </div>
         </div>
-      {/* </div> */}
+
+        <div className='col s12 m6'>
+          <div>
+            <BuildingForm />
+            <BuildingFilter />
     
-    
-    
+          </div>
+        </div>
+        </div>
+
+        <div className='row'>
+          <div className='col s12 m6'>
+          <ArticlesAdmin />
+          </div>
+          <div className='col s12 m6'>
+          <BuildingsAdmin />
+          </div>
+        </div>
+
+  
     </div>
   );
 };

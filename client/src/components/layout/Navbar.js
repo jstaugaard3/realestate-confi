@@ -4,7 +4,6 @@ import { Link } from 'react-router-dom';
 import AuthContext from '../../context/auth/authContext';
 import ArticleContext from '../../context/article/articleContext';
 
-
 const Navbar = ({ title, icon }) => {
   const authContext = useContext(AuthContext);
   const articleContext = useContext(ArticleContext);
@@ -41,26 +40,34 @@ const Navbar = ({ title, icon }) => {
   );
 
   return (
-    <div className='navbar blue-grey white-text'>
-      <h4>
-        <a href="/"><i className={icon} /> {title} </a>
-      </h4>
-      <h6><ul>{isAuthenticated ? authLinks : guestLinks}</ul></h6>
+
+    <div className='navbar-fixed'>
+      <nav>
+        <div className='nav-wrapper blue-grey'>
+          <span>{"  "}</span>
+          <a href='/'>
+            <i className={icon} />
+            <span>{`  `}</span>Real Estate Confi
+          </a>
+
+          <ul id='nav-mobile' className='right'>
+            {isAuthenticated ? authLinks : guestLinks}
+          </ul>
+        </div>
+      </nav>
     </div>
+
   );
 };
 
-
-
-
 Navbar.propTypes = {
   title: PropTypes.string.isRequired,
-  icon: PropTypes.string
+  icon: PropTypes.string,
 };
 
 Navbar.defaultProps = {
   title: 'Real Estate Confi',
-  icon: 'far fa-building'
+  icon: 'far fa-building',
 };
 
 export default Navbar;

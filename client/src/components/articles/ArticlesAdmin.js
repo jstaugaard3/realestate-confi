@@ -4,7 +4,7 @@ import ArticleItemAdmin from './ArticleItemAdmin';
 import Spinner from '../layout/Spinner';
 import ArticleContext from '../../context/article/articleContext';
 
-const Articles = () => {
+const ArticlesAdmin = () => {
   const articleContext = useContext(ArticleContext);
 
   const { articles, filtered, getArticles, loading } = articleContext;
@@ -20,33 +20,33 @@ const Articles = () => {
 
   return (
     <Fragment>
-      {articles !== null && !loading ? (
-        <TransitionGroup>
-          {filtered !== null
-            ? filtered.map(article => (
-                <CSSTransition
-                  key={article._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <ArticleItemAdmin article={article} />
-                </CSSTransition>
-              ))
-            : articles.map(article => (
-                <CSSTransition
-                  key={article._id}
-                  timeout={500}
-                  classNames='item'
-                >
-                  <ArticleItemAdmin article={article} />
-                </CSSTransition>
-              ))}
-        </TransitionGroup>
-      ) : (
-        <Spinner />
-      )}
+      <div className='row'>
+        {articles !== null && !loading ? (
+          <TransitionGroup>
+            {filtered !== null
+              ? filtered.map(article => (
+                  <CSSTransition
+                    key={article._id}
+                    timeout={500}
+                    classNames='item'>
+                    <ArticleItemAdmin article={article} />
+                  </CSSTransition>
+                ))
+              : articles.map(article => (
+                  <CSSTransition
+                    key={article._id}
+                    timeout={500}
+                    classNames='item'>
+                    <ArticleItemAdmin article={article} />
+                  </CSSTransition>
+                ))}
+          </TransitionGroup>
+        ) : (
+          <Spinner />
+        )}
+      </div>
     </Fragment>
   );
 };
 
-export default Articles;
+export default ArticlesAdmin;

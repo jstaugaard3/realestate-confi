@@ -43,6 +43,7 @@ const ArticleForm = () => {
   });
 
   const onSelectChange = e => {
+    console.log(e.target.value);
     setArticle({ ...article, property: e.target.value });
   };
 
@@ -52,7 +53,6 @@ const ArticleForm = () => {
     setArticle({ ...article, [e.target.name]: e.target.value });
 
   const onSubmit = e => {
-    console.log(article);
     e.preventDefault();
     if (current === null) {
       addArticle(article);
@@ -68,9 +68,9 @@ const ArticleForm = () => {
 
   return (
     <form onSubmit={onSubmit}>
-      <h2 className='text-primary'>
+      <h4 className='blue-grey-text'>
         {current ? 'Edit Article' : 'Add Article'}
-      </h2>
+      </h4>
       <input
         type='text'
         placeholder='Source'
@@ -113,6 +113,7 @@ const ArticleForm = () => {
         value={date}
         onChange={onChange}
       />
+      <div className="row">
       <div>Select building associated with article: </div>
       <select onChange={onSelectChange}>
         {buildings !== null
@@ -123,17 +124,18 @@ const ArticleForm = () => {
             ))
           : null}
       </select>
+      </div>
 
       <div>
         <input
           type='submit'
           value={current ? 'Update Article' : 'Add Article'}
-          className='btn btn-primary btn-block'
+          className='btn green'
         />
       </div>
       {current && (
         <div>
-          <button className='btn btn-light btn-block' onClick={clearAll}>
+          <button className='btn yellow black-text' onClick={clearAll}>
             Clear
           </button>
         </div>
