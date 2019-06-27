@@ -48,7 +48,6 @@ const ArticleState = props => {
 
     try {
       const res = await axios.get(`/api/articles/${id}`);
-      console.log("in getBuildingArticles");
       dispatch({
         type: GET_ARTICLES,
         payload: res.data
@@ -65,6 +64,7 @@ const ArticleState = props => {
 
   // Add Article
   const addArticle = async article => {
+    console.log("In addArticle");
     const config = {
       headers: {
         'Content-Type': 'application/json'

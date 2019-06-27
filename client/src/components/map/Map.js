@@ -4,10 +4,7 @@ import GoogleMapReact from 'google-map-react';
 
 const APIKEY = 'AIzaSyCaWDmX3JzF4wTq_lp6bNOP0WJZox3YXww';
 
-
-
 const Map = () => {
-
 
   const gotoBuildingPage = (e) => {
     console.log(e.target.id);
@@ -44,7 +41,7 @@ const Map = () => {
     lat: 40.0793,
     lng: -75.3016,
   };
-  const zoom = 13;
+  const zoom = 14;
 
   useEffect(() => {
     getBuildings();
@@ -54,8 +51,10 @@ const Map = () => {
   return (
 
     // Important! Always set the container height explicitly
-    <div>
-      <div style={{ height: '50vh', width: '100%' }}>
+    <div className="row mapClass">
+      <div className="card">
+      
+      <div style={{ height: '40vh', width: '100%' }}>
         <GoogleMapReact
           bootstrapURLKeys={{ key: APIKEY }}
           defaultCenter={center}
@@ -80,6 +79,7 @@ const Map = () => {
           )))
           ):null}              
         </GoogleMapReact>
+      </div>
       </div>
     </div>
   );

@@ -1,18 +1,10 @@
-import React, { useContext } from 'react';
-import ArticleContext from '../../context/article/articleContext';
+import React from 'react';
 import Moment from 'react-moment';
 import 'moment-timezone';
 
 const ArticleItemBuilding = ({ article }) => {
-  const articleContext = useContext(ArticleContext);
-  const { deleteArticle, setCurrent, clearCurrent } = articleContext;
 
-  const { _id, source, heading, link, desc, photo, property, date } = article;
-
-  const onDelete = () => {
-    deleteArticle(_id);
-    clearCurrent();
-  };
+  const { source, heading, link, desc, photo, date } = article;
 
   return (
     <div>
@@ -20,7 +12,7 @@ const ArticleItemBuilding = ({ article }) => {
         <div className='col s12'>
           <div className='card'>
             <div className='card-image'>
-              <img src={photo} />
+              <img src={photo} alt="Article" />
               <span className='card-title'>{heading}</span>
             </div>
             <div className='card-content'>
@@ -29,11 +21,11 @@ const ArticleItemBuilding = ({ article }) => {
 
             <div className='card-action'>
               <div className='row'>
-                <div className='col s12'>
+                <div className='col s12 m4'>
                   <a href={link}>Link</a>
                 </div>
 
-                <div className='col s12'>
+                <div className='col s12 m4'>
                   {date && (
                     <span>
                       <i className='fas fa-clock' />
@@ -42,7 +34,7 @@ const ArticleItemBuilding = ({ article }) => {
                   )}
                 </div>
 
-                <div className='col s12'>
+                <div className='col s12 m4'>
                   {source && (
                     <span>
                       <i className='fas fa-newspaper' />

@@ -30,8 +30,6 @@ const BuildingState = props => {
   const getBuildings = async () => {
     try {
       const res = await axios.get("/api/buildings/");
-      console.log("here is the response");
-      console.log(res);
       dispatch({
         type: GET_BUILDINGS,
         payload: res.data,
@@ -50,8 +48,6 @@ const BuildingState = props => {
     const getBuilding = async id => {
       try {
         const res = await axios.get(`/api/buildings/${id}`);
-        console.log("here is the response");
-        console.log(res);
         dispatch({
           type: GET_BUILDING,
           payload: res.data,
