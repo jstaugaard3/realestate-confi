@@ -39,6 +39,11 @@
   border: none
 }
 
+.building-info{
+  height: 36vh;
+}
+
+
 .btn{
   margin-right: 1rem;
 }
@@ -50,11 +55,6 @@ select {
   font-size: 1.2rem;
   border: 1px solid #ccc;
 }
-
-.building-info {
-  height: 400px
-}
-
 
 
 .navbar ul {

@@ -91,7 +91,7 @@ const Property = props => {
         <Fragment>
         <div className='col s12 m6'>
           <div className='card'>
-            <div style={{ height: '36.5vh', width: '100%' }}>
+            <div style={{ height: '36vh', width: '100%' }}>
               <GoogleMapReact
                 bootstrapURLKeys={{ key: APIKEY }}
                 defaultCenter={center}
@@ -112,8 +112,6 @@ const Property = props => {
                   ) : (
                     <Spinner />
                   )}
-
-
               </GoogleMapReact>
             </div>
           </div>
