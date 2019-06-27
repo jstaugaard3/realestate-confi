@@ -1,6 +1,7 @@
 {
   "name": "realestateconfi",
   "version": "1.0.0",
+  "engines": {"node": "12.3.1"},
   "description": "real estate news app",
   "main": "server.js",
   "scripts": {
