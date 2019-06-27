@@ -1,7 +1,7 @@
 import React, { useContext } from 'react';
 import ArticleContext from '../../context/article/articleContext';
 import Moment from 'react-moment';
-import 'moment-timezone';
+
 
 const ArticleItemAdmin = ({ article }) => {
   const articleContext = useContext(ArticleContext);
