@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 
 const BuildingItem = ({ building }) => {
 
-  const { _id, street, city, state, lat, lng, deleteBuilding, clearCurrentBuilding } = building;
+  const { _id, street, city, state, lat, lng } = building;
 
   return (
     <div>

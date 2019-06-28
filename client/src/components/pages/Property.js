@@ -2,6 +2,8 @@ import React, { Fragment, useContext, useEffect } from 'react';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import AuthContext from '../../context/auth/authContext';
 import Spinner from '../layout/Spinner';
+import Forum from '../layout/Forum';
+
 import ArticleContext from '../../context/article/articleContext';
 import ArticleItemBuilding from '../articles/ArticleItemBuilding';
 import BuildingContext from '../../context/building/buildingContext';
@@ -63,8 +65,8 @@ const Property = props => {
     // Return of object
     <div>
       <div className='row'>
-      <Fragment>
-        <div className='col s12 m6'>
+        <Fragment>
+          <div className='col s12 m6'>
             {buildings !== null && !loading ? (
               buildings.map(building => (
                 <div className='card building-info'>
@@ -84,22 +86,20 @@ const Property = props => {
             ) : (
               <Spinner />
             )}
-        </div>
+          </div>
         </Fragment>
 
-
         <Fragment>
-        <div className='col s12 m6'>
-          <div className='card'>
-            <div style={{ height: '36vh', width: '100%' }}>
-              <GoogleMapReact
-                bootstrapURLKeys={{ key: APIKEY }}
-                defaultCenter={center}
-                defaultZoom={zoom}
-                yesIWantToUseGoogleMapApiInternals
-                // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)} 
+          <div className='col s12 m6'>
+            <div className='card building-info'>
+              <div style={{ height: '100%', width: '100%' }}>
+                <GoogleMapReact
+                  bootstrapURLKeys={{ key: APIKEY }}
+                  defaultCenter={center}
+                  defaultZoom={zoom}
+                  yesIWantToUseGoogleMapApiInternals
+                  // onGoogleApiLoaded={({ map, maps }) => apiIsLoaded(map, maps, places)}
                 >
-      
                   {buildings !== null && !loading ? (
                     buildings.map(building => (
                       <BuildingPins
@@ -112,39 +112,38 @@ const Property = props => {
                   ) : (
                     <Spinner />
                   )}
-              </GoogleMapReact>
+                </GoogleMapReact>
+              </div>
             </div>
           </div>
-        </div>
         </Fragment>
       </div>
 
       <div className='row'>
         <div className='col s12 m6'>
-          
-        <ArticleFilter />
+          <ArticleFilter />
 
           {articles !== null && !loading ? (
             <TransitionGroup>
-            {filtered !== null
-              ? filtered.map(article => (
-                  <CSSTransition
-                    key={article._id}
-                    timeout={500}
-                    classNames='item'>
-                    <ArticleItemBuilding article={article} />
-                  </CSSTransition>
-                ))
-              : articles.map(article => (
-                  <CSSTransition
-                    key={article._id}
-                    timeout={500}
-                    classNames='item'>
-                    <ArticleItemBuilding article={article} />
-                  </CSSTransition>
-                ))}
-          </TransitionGroup>
-        ) : (
+              {filtered !== null
+                ? filtered.map(article => (
+                    <CSSTransition
+                      key={article._id}
+                      timeout={500}
+                      classNames='item'>
+                      <ArticleItemBuilding article={article} />
+                    </CSSTransition>
+                  ))
+                : articles.map(article => (
+                    <CSSTransition
+                      key={article._id}
+                      timeout={500}
+                      classNames='item'>
+                      <ArticleItemBuilding article={article} />
+                    </CSSTransition>
+                  ))}
+            </TransitionGroup>
+          ) : (
             <Spinner />
           )}
         </div>
@@ -152,16 +151,10 @@ const Property = props => {
         <div className='col s12 m6'>
           <div className='row'>
             <div className='col s12'>
-              <h4 className="center">Coming Soon!  Building Forum</h4>
-              <div className='card'>
-                <div className='card-content card-forum grey black-text'>
-                  <h6> SSmith: How much is costing to build this? </h6>
-                  <h6> -> ARami: I heard $570 per sf</h6>
-                  <h6> -> jism29: That is before budget overruns</h6>
-                  <h6> MKidm: What tenat is going in the building? </h6>
-                  <h6> -> ARami: They don't have anyone</h6>
-                  <h6> -> jism29: Really????</h6>
-                  <h6> User29: This project is going to lose money!!</h6>
+              <h4 className='center'>Coming Soon! Building Forum</h4>
+              <div className='card card-forum'>
+                <div>
+                  <Forum />
                 </div>
               </div>
             </div>

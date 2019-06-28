@@ -64,7 +64,6 @@ const ArticleState = props => {
 
   // Add Article
   const addArticle = async article => {
-    console.log("In addArticle");
     const config = {
       headers: {
         'Content-Type': 'application/json'
@@ -105,7 +104,6 @@ const ArticleState = props => {
 
   // Update Article
   const updateArticle = async article => {
-    console.log(article);
     const config = {
       headers: {
         'Content-Type': 'application/json'

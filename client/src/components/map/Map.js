@@ -7,9 +7,7 @@ const APIKEY = 'AIzaSyCaWDmX3JzF4wTq_lp6bNOP0WJZox3YXww';
 const Map = () => {
 
   const gotoBuildingPage = (e) => {
-    console.log(e.target.id);
     window.location = `/property/${e.target.id}`;
-
   }
 
   const buildingContext = useContext(BuildingContext);

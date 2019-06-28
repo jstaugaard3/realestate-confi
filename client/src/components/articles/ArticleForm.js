@@ -43,7 +43,6 @@ const ArticleForm = () => {
   });
 
   const onSelectChange = e => {
-    console.log(e.target.value);
     setArticle({ ...article, property: e.target.value });
   };
 

@@ -94,11 +94,7 @@ const BuildingState = props => {
   // Delete Building
   const deleteBuilding = async id => {
 
-    console.log("IN DELETE BUILDING"+ id);
     try {
-      console.log(`/api/buildings/${id}`
-
-      )
       await axios.delete(`/api/buildings/${id}`);
 
       dispatch({
@@ -106,7 +102,6 @@ const BuildingState = props => {
         payload: id
       });
     } catch (err) {
-      console.log("HERE IS THE ERROR");
       dispatch({
         type: BUILDING_ERROR,
         payload: err.response.msg
