@@ -1,5 +1,4 @@
 {
     "mongoURI": "mongodb+srv://joe123456:joe123456@realestate-confi-jp8ts.mongodb.net/test?retryWrites=true&w=majority",
-    "jwtSecret" : "secret",
-    "google" : "AIzaSyCaWDmX3JzF4wTq_lp6bNOP0WJZox3YXww"
+    "jwtSecret" : "secret"
 }
